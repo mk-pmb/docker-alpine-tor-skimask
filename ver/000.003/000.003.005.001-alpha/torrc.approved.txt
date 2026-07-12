@@ -1,0 +1,14 @@
+#%base% torrc.sample@sha1:56f5caa2ce5ed8bdfb8a2fe800ae954f39dd5908
+# ^-- <cite>Last updated 28 February 2019 for Tor 0.3.5.1-alpha.</cite>
+
+# To make docker port forwarding work, we need to listen on any IP
+# that docker will assign for us:
+SocksPort 0.0.0.0:9050
+
+# Log notice stdout
+
+# deprecated # HTTPProxy host:port
+# HTTPSProxy host:port
+
+# In case some config accident enables ORPort, at least don't be an exit:
+ExitRelay 0
