@@ -1,0 +1,21 @@
+{ "name": "docker-alpine-tor-skimask",
+  "version": "0.0.0",
+  "description": "Let your whale host the latest onion.",
+  "keywords": [],
+
+  "author": "M.K. (https://github.com/mk-pmb)",
+  "homepage": "https://github.com/mk-pmb/docker-alpine-tor-skimask/#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mk-pmb/docker-alpine-tor-skimask.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mk-pmb/docker-alpine-tor-skimask/issues"
+  },
+  "contributors": [],
+
+  "private": true, "license": "ISC",
+
+
+  "engines": { "npm": ">=7.0.0", "docker": ">=28.1.1" }
+}
