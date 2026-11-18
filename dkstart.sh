@@ -7,11 +7,11 @@ function dkstart () {
   local SELFPATH="$(readlink -m -- "$BASH_SOURCE"/..)"
   cd -- "$SELFPATH" || return $?
   local DK_CTNR='skimask'
-  local DK_LOGS=( docker logs --follow )
   if docker container port "$DK_CTNR" >/dev/null; then
     echo D: 'Container exists. Start!'
     docker container start "$DK_CTNR" || return $?
-    exec "${DK_LOGS[@]}" "$DK_CTNR"; return $?
+    dklogs || return $?
+    return 0
   fi
 
   echo D: 'Container missing. Create!'
@@ -55,7 +55,13 @@ function dkstart () {
     /app/src/inside.sh
     )
   docker "${DK_RUN[@]}" || return $?
-  exec "${DK_LOGS[@]}" "$DK_CTNR"; return $?
+  dklogs || return $?
+}
+
+
+function dklogs () {
+  docker logs --follow "$DK_CTNR" | sed -re '/ Bootstrapped 100%/a'$(
+    )'\# ^-- Looking good. You may press Ctrl-c to stop watching the logs.'
 }
 
 
